@@ -11,6 +11,7 @@
     <img src="https://img.shields.io/github/stars/oppsec/juumla?color=yellow&label=STARS&logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/v/release/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/languages/code-size/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
+    
 </p>
 
 ___
@@ -18,6 +19,8 @@ ___
 <br>
 
 <p> 🦁 <b>Juumla</b> Juumla is a python tool created to identify Joomla version, scan for vulnerabilities and sensitive files. </p>
+
+[![Starlog](https://img.shields.io/badge/Starlog-Deep_Dive-00e5ff?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyTDkgOUgyTDcgMTRMNSAyMkwxMiAxN0wxOSAyMkwxNyAxNEwyMiA5SDE1TDEyIDJaIi8+PC9zdmc+)](https://starlog.is/articles/cybersecurity/0xdsm-juumla)
 
 <br>
 
