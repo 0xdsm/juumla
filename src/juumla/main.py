@@ -1,45 +1,48 @@
-from requests import get, exceptions
+from requests import Session
+from requests.exceptions import RequestException
 
 from rich.console import Console
-console = Console()
 
-from urllib3 import disable_warnings
-disable_warnings()
-
-from src.juumla.settings import props
 from src.juumla.modules.version import get_version
 
+console = Console()
 
-def perform_checks(args) -> None:
-    " Connect to the target and check if status code is positive "
 
-    global url
-    url = args.u
-
+def perform_checks(url: str, session: Session) -> None:
     try:
-        response: str = get(url, **props)
+        response = session.get(url, allow_redirects=True)
         status_code: int = response.status_code
         body: str = response.text
 
         if response.ok:
-            console.print(f"[green][+][/] Connected successfully to [yellow]{url}[/]", highlight=False)
-            detect_joomla(body)
+            console.print(
+                f"[green][+][/] Connected successfully to [yellow]{url}[/]",
+                highlight=False,
+            )
+            detect_joomla(url, body, session)
         else:
-            console.print(f"[red][-][/] Host returned status code: {status_code}", highlight=False)
-            return
+            console.print(
+                f"[red][-][/] Host returned status code: {status_code}",
+                highlight=False,
+            )
 
-    except exceptions as error:
-        console.print(f"[red][-][/] Error when trying to connect to {url}: {error}", highlight=False)
-        return
+    except RequestException as error:
+        console.print(
+            f"[red][-][/] Error when trying to connect to {url}: {error}",
+            highlight=False,
+        )
 
 
-def detect_joomla(body) -> None:
-    " Check if meta tag 'generator' contains Joomla! in body response "
+def detect_joomla(url: str, body: str, session: Session) -> None:
+    console.print(
+        "[yellow][!][/] Checking if target is running Joomla...",
+        highlight=False,
+    )
 
-    console.print("[yellow][!][/] Checking if target is running Joomla...", highlight=False)
-
-    if '<meta name="generator" content="Joomla!' in body: 
-        get_version(url)
+    if '<meta name="generator" content="Joomla!' in body:
+        get_version(url, session)
     else:
-        console.print("[red][-][/] Target is not running Joomla apparently")
-        return
+        console.print(
+            "[red][-][/] Target is not running Joomla apparently",
+            highlight=False,
+        )

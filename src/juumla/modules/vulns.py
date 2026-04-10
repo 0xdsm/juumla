@@ -1,29 +1,45 @@
 from json import load
+from pathlib import Path
+
+from requests import Session
 from rich.console import Console
-console = Console()
 
 from src.juumla.modules.files import files_manager
 
+console = Console()
 
-def vuln_manager(url, version) -> None:
-    " Search for vulnerabilities on current target Joomla version "
+_DATA_FILE = Path(__file__).parent.parent / "data" / "vulnerabilites.json"
 
-    console.print("\n[yellow][!][/] Running Joomla vulnerabilities scanner! [cyan](2/3)[/]", highlight=False)
 
-    filename: str = "src/juumla/data/vulnerabilites.json"
-    
-    with open(filename) as file:
+def parse_version(version_str: str) -> tuple[int, ...]:
+    parts = version_str.strip().split(".")
+    result: list[int] = []
+    for part in parts:
+        try:
+            result.append(int(part))
+        except ValueError:
+            result.append(0)
+    return tuple(result)
+
+
+def vuln_manager(url: str, version: str, session: Session) -> None:
+    console.print(
+        "\n[yellow][!][/] Running Joomla vulnerabilities scanner! [cyan](2/3)[/]",
+        highlight=False,
+    )
+
+    parsed_target = parse_version(version)
+
+    with open(_DATA_FILE) as file:
         content = load(file)
 
-        for vuln_title, vuln_version in content.items():
-            vuln_version = vuln_version.split("|")
-            min_version = vuln_version[0]
-            max_version = vuln_version[1]
-
-            if version >= min_version and version <= max_version:
+        for vuln_title, version_range in content.items():
+            min_str, max_str = version_range.split("|")
+            if parse_version(min_str) <= parsed_target <= parse_version(max_str):
                 console.print(f"[green][+][/] {vuln_title}", highlight=False)
-            else:
-                pass
 
-    console.print("[yellow][!][/] Vulnerabilities scanner finished! [cyan](2/3)[/]", highlight=False)
-    files_manager(url)
+    console.print(
+        "[yellow][!][/] Vulnerabilities scanner finished! [cyan](2/3)[/]",
+        highlight=False,
+    )
+    files_manager(url, session)

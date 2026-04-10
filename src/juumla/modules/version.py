@@ -1,63 +1,78 @@
-from requests import get, exceptions
-from xmltodict import parse, expat
+from requests import Session
+from requests.exceptions import RequestException
+from xmltodict import parse
 
 from rich.console import Console
-console = Console()
 
-from urllib3 import disable_warnings
-disable_warnings()
-
-from src.juumla.settings import props
 from src.juumla.modules.vulns import vuln_manager
 
-app_xml_header = "application/xml"
-text_xml_header = "text/xml"
+console = Console()
+
+_APP_XML = "application/xml"
+_TEXT_XML = "text/xml"
 
 
-def get_version(url: str) -> None:
-    " Get Joomla version based on XML files response "
+def _is_xml_response(content_type: str) -> bool:
+    return _APP_XML in content_type or _TEXT_XML in content_type
 
-    console.print("\n[yellow][!][/] Running Joomla version scanner! [cyan](1/3)[/]", highlight=False)
+
+def get_version(url: str, session: Session) -> None:
+    console.print(
+        "\n[yellow][!][/] Running Joomla version scanner! [cyan](1/3)[/]",
+        highlight=False,
+    )
+
+    xml_file = f"{url}/language/en-GB/en-GB.xml"
 
     try:
-        xml_file = f"{url}/language/en-GB/en-GB.xml"
-        response: str = get(xml_file, **props)
-        headers: str = response.headers
+        response = session.get(xml_file, allow_redirects=True)
+        content_type: str = response.headers.get("Content-Type", "")
 
-        if response.ok and (app_xml_header in headers.get('Content-Type', '') or text_xml_header in headers.get('Content-Type', '')):
+        if response.ok and _is_xml_response(content_type):
             data = parse(response.content)
-            version = data["metafile"]["version"]
-
-            console.print(f"[green][+][/] Joomla version is: {version}", highlight=False)
-            vuln_manager(url, version)
+            version: str = data["metafile"]["version"]
+            console.print(
+                f"[green][+][/] Joomla version is: {version}",
+                highlight=False,
+            )
+            vuln_manager(url, version, session)
         else:
-            console.print("[yellow][!][/] Couldn't get Joomla version, trying other way...", highlight=False)
-            get_version_second(url)
+            console.print(
+                "[yellow][!][/] Couldn't get Joomla version, trying other way...",
+                highlight=False,
+            )
+            get_version_second(url, session)
 
-    except Exception as error:
-        console.print(f"[red][-][/] Error when trying to get {url} Joomla version in first method: {error}", highlight=False)
-        return
+    except RequestException as error:
+        console.print(
+            f"[red][-][/] Error when trying to get {url} Joomla version in first method: {error}",
+            highlight=False,
+        )
 
 
-def get_version_second(url) -> None:
-    """ Last try to get Joomla version """
-
+def get_version_second(url: str, session: Session) -> None:
     manifest_file = f"{url}/administrator/manifests/files/joomla.xml"
 
     try:
-        response = get(manifest_file, **props)
-        headers = response.headers
+        response = session.get(manifest_file, allow_redirects=True)
+        content_type: str = response.headers.get("Content-Type", "")
 
-        if response.ok and (app_xml_header in headers.get('Content-Type', '') or text_xml_header in headers.get('Content-Type', '')):
+        if response.ok and _is_xml_response(content_type):
             data = parse(response.content)
-            version = data["extension"]["version"]
-
-            console.print(f"[green][+][/] Joomla version is: {version}", highlight=False)
-            vuln_manager(url, version)
+            version: str = data["extension"]["version"]
+            console.print(
+                f"[green][+][/] Joomla version is: {version}",
+                highlight=False,
+            )
+            vuln_manager(url, version, session)
         else:
-            console.print("[red][-][/] Couldn't get Joomla version, stopping...", highlight=False)
-            return
+            console.print(
+                "[red][-][/] Couldn't get Joomla version, stopping...",
+                highlight=False,
+            )
 
-    except Exception as error:
-        console.print(f"[red][-][/] Error when trying to get {url} Joomla version in second method: {error}", highlight=False)
-        return
+    except RequestException as error:
+        console.print(
+            f"[red][-][/] Error when trying to get {url} Joomla version in second method: {error}",
+            highlight=False,
+        )
