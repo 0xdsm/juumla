@@ -9,9 +9,7 @@
     <img src="https://img.shields.io/github/license/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/issues/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/stars/oppsec/juumla?color=yellow&label=STARS&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/v/release/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/languages/code-size/oppsec/juumla?color=yellow&logo=github&style=for-the-badge">
-    
 </p>
 
 ___
