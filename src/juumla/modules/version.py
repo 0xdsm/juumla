@@ -24,7 +24,7 @@ def get_version(url: str) -> None:
         response: str = get(xml_file, **props)
         headers: str = response.headers
 
-        if response.ok and app_xml_header or text_xml_header in headers:
+        if response.ok and (app_xml_header in headers.get('Content-Type', '') or text_xml_header in headers.get('Content-Type', '')):
             data = parse(response.content)
             version = data["metafile"]["version"]
 
@@ -48,7 +48,7 @@ def get_version_second(url) -> None:
         response = get(manifest_file, **props)
         headers = response.headers
 
-        if response.ok and app_xml_header or text_xml_header in headers:
+        if response.ok and (app_xml_header in headers.get('Content-Type', '') or text_xml_header in headers.get('Content-Type', '')):
             data = parse(response.content)
             version = data["extension"]["version"]
 
