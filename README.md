@@ -1,6 +1,6 @@
 # 🦁 Juumla
 <div align="center">
-    <img src="https://i.imgur.com/0RvLKOP.png" width="900">
+    <img width="2266" height="1116" alt="image" src="https://github.com/user-attachments/assets/66bbf6b1-fa38-425b-bcb2-0395175a0a0c" />
 </div>
 
 <br>
