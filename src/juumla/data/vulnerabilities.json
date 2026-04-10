@@ -1,0 +1,209 @@
+[
+  {
+    "cve": "CVE-2023-23752",
+    "title": "Joomla! Improper Access Check - Unauthenticated Information Disclosure",
+    "min_version": "4.0.0",
+    "max_version": "4.2.7",
+    "severity": "high",
+    "cvss": 7.5,
+    "reference": "https://developer.joomla.org/security-centre/894-20230201-core-improper-access-check-in-webservice-endpoints.html"
+  },
+  {
+    "cve": "CVE-2019-10945",
+    "title": "Joomla! Core - Directory Traversal / Authenticated Arbitrary File Deletion",
+    "min_version": "1.5.0",
+    "max_version": "3.9.4",
+    "severity": "critical",
+    "cvss": 9.1,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2019-10945"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! Core - Persistent Cross-Site Scripting in Global Configuration Textfilter Settings",
+    "min_version": "2.5.0",
+    "max_version": "3.9.1",
+    "severity": "medium",
+    "cvss": null,
+    "reference": "https://developer.joomla.org/security-centre/782-20190103-core-xss-in-global-configuration-textfilter-settings.html"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - CSV Injection in Various List Views",
+    "min_version": "3.9.0",
+    "max_version": "3.9.6",
+    "severity": "medium",
+    "cvss": null,
+    "reference": "https://developer.joomla.org/security-centre/791-20190701-core-csv-injection-in-various-list-views.html"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - Host Header Injection",
+    "min_version": "3.9.13",
+    "max_version": "3.9.13",
+    "severity": "medium",
+    "cvss": null,
+    "reference": "https://developer.joomla.org/security-centre/806-20191001-core-path-disclosure-via-page-not-found.html"
+  },
+  {
+    "cve": "CVE-2015-8562",
+    "title": "Joomla! PHP Object Injection Remote Command Execution",
+    "min_version": "1.5.0",
+    "max_version": "3.4.5",
+    "severity": "critical",
+    "cvss": 9.8,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2015-8562"
+  },
+  {
+    "cve": "CVE-2016-8869",
+    "title": "Joomla! Privilege Escalation via User Registration",
+    "min_version": "3.4.4",
+    "max_version": "3.6.3",
+    "severity": "critical",
+    "cvss": 9.8,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2016-8869"
+  },
+  {
+    "cve": "CVE-2016-8870",
+    "title": "Joomla! Unauthorized Account Registration",
+    "min_version": "3.4.4",
+    "max_version": "3.6.3",
+    "severity": "medium",
+    "cvss": 5.3,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2016-8870"
+  },
+  {
+    "cve": "CVE-2016-9081",
+    "title": "Joomla! Account Manipulation - Admin Takeover",
+    "min_version": "3.4.4",
+    "max_version": "3.6.3",
+    "severity": "critical",
+    "cvss": 9.8,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2016-9081"
+  },
+  {
+    "cve": "CVE-2017-8917",
+    "title": "Joomla! SQL Injection via com_fields",
+    "min_version": "3.7.0",
+    "max_version": "3.7.0",
+    "severity": "critical",
+    "cvss": 9.8,
+    "reference": "https://www.cve.org/CVERecord?id=CVE-2017-8917"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - Remote Code Execution via Object Deserialisation in 'configuration.php'",
+    "min_version": "3.4.6",
+    "max_version": "3.4.6",
+    "severity": "critical",
+    "cvss": null,
+    "reference": "https://www.exploit-db.com/exploits/40637"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - SQL Injection in com_contenthistory",
+    "min_version": "3.2.0",
+    "max_version": "3.4.3",
+    "severity": "high",
+    "cvss": null,
+    "reference": "https://developer.joomla.org/security-centre/630-20150901-core-sql-injection.html"
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 3.2.1 - SQL Injection",
+    "min_version": "3.2.1",
+    "max_version": "3.2.1",
+    "severity": "high",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 3.0.2 - 'highlight.php' PHP Object Injection",
+    "min_version": "3.0.2",
+    "max_version": "3.0.2",
+    "severity": "critical",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 3.0.3 - 'remember.php' PHP Object Injection",
+    "min_version": "3.0.3",
+    "max_version": "3.0.3",
+    "severity": "critical",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 2.5.x - Blind SQL Injection",
+    "min_version": "2.5.0",
+    "max_version": "2.5.0",
+    "severity": "high",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 2.5.1 - 'redirect.php' Blind SQL Injection",
+    "min_version": "2.5.1",
+    "max_version": "2.5.1",
+    "severity": "high",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - Unauthorized Admin Account Creation",
+    "min_version": "1.0.0",
+    "max_version": "2.5.1",
+    "severity": "critical",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 1.6 - Multiple SQL Injections",
+    "min_version": "1.6.0",
+    "max_version": "1.6.0",
+    "severity": "high",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 1.5 - Open Redirect via URL Parameter",
+    "min_version": "1.5.0",
+    "max_version": "1.5.0",
+    "severity": "low",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 1.5.12 - Remote Connect Back",
+    "min_version": "1.5.12",
+    "max_version": "1.5.12",
+    "severity": "critical",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! - Multiple Cross-Site Scripting / HTML Injection Vulnerabilities",
+    "min_version": "1.0.0",
+    "max_version": "1.5.10",
+    "severity": "medium",
+    "cvss": null,
+    "reference": null
+  },
+  {
+    "cve": null,
+    "title": "Joomla! 1.0.9 - 'Weblinks' Blind SQL Injection",
+    "min_version": "1.0.9",
+    "max_version": "1.0.9",
+    "severity": "high",
+    "cvss": null,
+    "reference": null
+  }
+]
