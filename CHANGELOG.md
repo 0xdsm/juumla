@@ -1,3 +1,13 @@
+# 🎉 0.1.7 - 10/03/2026
+- Improved the Joomla version detection mechanism
+- Improved how vulnerabilities are stored in vulnerabilities.json
+- Fixed performance bugs
+- Fixed false-positives in vulnerabilities version mismatch
+- Added -H flag to specify custom header
+- Improved the code
+
+<br><br>
+
 # 🎉 0.1.6 - 02/05/2024
 - Added check to config and backup files scanner if result is not HTML response
 - Changed print to console.print from rich
